@@ -5,25 +5,33 @@ import Logo from "../assets/logo.svg";
 
 const Nav = () => {
   const navigate = useNavigate();
+  const isSearchPage = ("/browse" || "/token/:id") === window.location.pathname;
   return (
     <div className="row">
       <nav>
-        <img src={Logo} id="logo" alt="" onClick={() => navigate("/")}/>
+        <img src={Logo} id="logo" className={`${isSearchPage} && "color__change"`} alt="" onClick={() => navigate("/")} />
         <ul className="nav__links">
           <li className="nav__link">
-            <Link to="/" className="nav__link--anchor link__hover-effect">
+            <Link
+              to="/"
+              className={`nav__link--anchor link__hover-effect ${
+                !isSearchPage && "nav__link--anchor--active"
+              } ${isSearchPage && "nav__link--anchor--white"}`}
+            >
               Home
             </Link>
           </li>
           <li className="nav__link">
             <Link
-              to="/browse-movies"
-              className="nav__link--anchor link__hover-effect"
+              to="/browse"
+              className={`nav__link--anchor link__hover-effect ${
+                isSearchPage && "nav__link--anchor--active " + "nav__link--anchor--white"
+              }`}
             >
-              Search Movies
+              Search Tokens
             </Link>
           </li>
-          <li className="nav__link nav__link--primary">
+          <li className={`nav__link nav__link--primary ${isSearchPage && "nav__link--primary--shadow"}`}>
             <Link
               to=""
               className="nav__link--anchor nav__link--anchor--primary link__hover-effect"
