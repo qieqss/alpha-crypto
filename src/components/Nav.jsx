@@ -5,7 +5,7 @@ import Logo from "../assets/logo.svg";
 
 const Nav = () => {
   const navigate = useNavigate();
-  const isSearchPage = ("/browse" || "/token/:id") === window.location.pathname;
+  const isSearchPage = ("/browse" || "/movie/:id") === window.location.pathname;
   return (
     <div className="row">
       <nav>
@@ -28,7 +28,7 @@ const Nav = () => {
                 isSearchPage && "nav__link--anchor--active " + "nav__link--anchor--white"
               }`}
             >
-              Search Tokens
+              Search Movies
             </Link>
           </li>
           <li className={`nav__link nav__link--primary ${isSearchPage && "nav__link--primary--shadow"}`}>

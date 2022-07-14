@@ -16,6 +16,12 @@ body {
   --main-color: #F7931A;
 }
 
+button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
 input {
   outline: none;
   border: none;
@@ -254,7 +260,7 @@ BROWSE
   margin-top: 40px;
 }
 
-#tokens .row {
+#movies .row {
   display: flex;
   justify-content: center;
 }
@@ -272,6 +278,10 @@ footer {
 .footer__logo {
   display: flex;
   margin-bottom: 8px;
+}
+
+footer #logo {
+  filter: invert(1)
 }
 
 .footer__links {

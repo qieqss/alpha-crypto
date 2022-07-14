@@ -17,12 +17,12 @@ const Footer = () => {
               Home
             </Link>
             <Link className="footer__link" to="/browse">
-              Tokens
+              Movies
             </Link>
             <span className="footer__link no-cursor">About</span>
           </div>
           <div className="footer__copyright">
-            Copyright &copy; 2022 Alpha Crypto
+            Copyright &copy; 2022 Alpha Movies
           </div>
         </div>
       </div>
