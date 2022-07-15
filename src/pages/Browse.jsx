@@ -18,7 +18,7 @@ const Browse = () => {
   function renderMovies(query) {
     axios
       .get(
-        `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${query}`
+        `https://api.themoviedb.org/3/search/movie?api_key=b69c1933d70772560f256dfcc45c6056&query=${query}`
       )
       .then(({ data }) => {
         setMovies(data.results);
