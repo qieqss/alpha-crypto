@@ -8,7 +8,7 @@ const Movies = ({ moviesValue }) => {
           <h2 className="search__info">
             Search results for <span className="orange">""</span>
           </h2>
-          <div className="movies">
+          <div className="movies" key={moviesValue}>
             {moviesValue
               .map((movie) => {
                 <div className="movie">
@@ -19,7 +19,7 @@ const Movies = ({ moviesValue }) => {
                     />
                   </figure>
                   {movie.original_title}
-                </div>;
+                </div>
               })
               .slice(0, 8)}
           </div>
