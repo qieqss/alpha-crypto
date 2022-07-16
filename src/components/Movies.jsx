@@ -1,25 +1,38 @@
 import React from "react";
+import NotFound from "../assets/search.svg";
 
-const Movies = ({ moviesValue }) => {
+const Movies = ({ movies }) => {
+
   return (
     <section id="movies">
       <div className="container">
         <div className="row">
-          <h2 className="search__info">
-            Search results for <span className="orange">""</span>
-          </h2>
-          <div className="movies" key={moviesValue}>
-            {moviesValue
+          <div className="search__info">
+            <h2>
+              Search results for{" "}
+              <span className="purple">
+                "{localStorage.getItem("searchValue")}"
+              </span>
+            </h2>
+          </div>
+          <div className="movies">
+            {movies
               .map((movie) => {
-                <div className="movie">
+                return movie.poster_path ? (
+                  <div className="movie" key={movie.id}>
+                    <figure className="movie__poster">
+                      <img
+                        src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+                        alt=""
+                        className="movie__poster--img"
+                      />
+                    </figure>
+                  </div>
+                ) : movies.total_results === 0 ? (
                   <figure>
-                    <img
-                      src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
-                      alt=""
-                    />
+                    <img src={NotFound} alt="" />
                   </figure>
-                  {movie.original_title}
-                </div>
+                ) : null;
               })
               .slice(0, 8)}
           </div>

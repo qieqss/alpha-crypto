@@ -13,7 +13,7 @@ body {
 }
 
 :root {
-  --main-color: #F7931A;
+  --main-color: #663399;
 }
 
 button {
@@ -55,7 +55,7 @@ a {
   align-items: center;
 }
 
-.orange {
+.purple {
   color: var(--main-color)
 }
 
@@ -120,7 +120,7 @@ nav {
 }
 
 .nav__link--primary--shadow {
-  box-shadow: 0 1px 3px 3px rgba(247,147,106,1);
+  box-shadow: 0 1px 2px 1px #665999;
 }
 
 /* 
@@ -161,13 +161,15 @@ LANDING
 
 #landing header .input--wrapper {
   width: 100%;
-  max-width: 500px;
+  max-width: 400px;
+  min-width: 400px;
   margin-right: 24px;
 }
 
 #landing header .input--wrapper input {
   width: 100%;
-  max-width: 500px;
+  max-width: 400px;
+  min-width: 400px;
   height: 50px;
   font-size: 24px;
   border-radius: 8px;
@@ -218,7 +220,7 @@ BROWSE
 */
 
 #browse {
-  background: linear-gradient(rgba(247,147,26,1), rgba(247,147,154,1));
+  background: linear-gradient(var(--main-color), #665999);
   min-height: 375px;
 }
 
@@ -239,16 +241,16 @@ BROWSE
   display: flex;
   align-items: center;
   width: 100%;
-  max-width: 425px;
+  max-width: 525px;
 }
 
 #browse .browser--wrapper input {
   height: 60px;
   width: 100%;
-  max-width: 425px;
-  border-radius: 20px;
+  max-width: 525px;
+  border-radius: 999px;
   font-size: 24px;
-  padding: 0 48px 0 16px;
+  padding: 0 64px 0 24px;
 }
 
 #browse figure {
@@ -256,13 +258,49 @@ BROWSE
   right: 8px;
 }
 
+#browse .MuiButtonBase-root {
+  color: #000;
+}
+
 #browse .browser--wrapper {
   margin-top: 40px;
 }
 
-#movies .row {
+/* 
+
+MOVIES
+
+*/
+
+.movie {
+  width: calc(100% / 4);
+  margin: 16px 0;
+}
+
+.movies {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
+  margin-top: 64px;
+}
+
+
+.movie__poster--img,
+.movie__poster {
+  width: 100%;
+  max-width: 250px;
+  height: 375px;
+  cursor: pointer;
+  transition: transform 500ms ease;
+}
+
+.movie__poster:hover .movie__poster--img {
+  transform: scale(1.07)
+}
+
+.movie__poster--img {
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 /* 
@@ -313,11 +351,19 @@ MEDIA
   .search--wrapper {
     flex-direction: column;
     min-width: 400px;
-    margin-left: 24px;
   }
   .search__img--wrapper {
-    margin: 24px 24px 0 0;
     width: 100%;
-    min-width: 400px;
+    min-width: 300px;
+  }
+  .input--wrapper {
+    margin: 0 0 16px 16px;
+  }
+}
+
+@media (max-width: 554px) {
+  #landing header .input--wrapper,
+  #landing header .input--wrapper input {
+    min-width: 0;
   }
 }

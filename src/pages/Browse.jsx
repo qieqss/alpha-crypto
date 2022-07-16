@@ -5,20 +5,25 @@ import axios from "axios";
 import API_KEY from "../keys";
 import Movies from "../components/Movies";
 import { IconButton } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const Browse = () => {
+  const navigate = useNavigate();
   const [movies, setMovies] = React.useState([]);
-  const [query, setQuery] = React.useState("");
+  const [query, setQuery] = React.useState();
   const [loading, setLoading] = React.useState(true);
 
+
+
   function handleSearch() {
-    query === "" ? setQuery(null) : renderMovies(query);
+    query && renderMovies(query);
+    localStorage.setItem("searchValue", query);
   }
 
   function renderMovies(query) {
     axios
       .get(
-        `https://api.themoviedb.org/3/search/movie?api_key=b69c1933d70772560f256dfcc45c6056&query=${query}`
+        `https://api.themoviedb.org/3/search/movie?sort_by=popularity.desc&api_key=${API_KEY}&query=${query}`
       )
       .then(({ data }) => {
         setMovies(data.results);
@@ -30,10 +35,10 @@ const Browse = () => {
   }
 
   React.useEffect(() => {
-    renderMovies();
+    localStorage.getItem("searchValue") &&
+      renderMovies(localStorage.getItem("searchValue"));
   }, []);
 
-  console.log(movies);
   return (
     <>
       <section id="browse">
@@ -46,7 +51,7 @@ const Browse = () => {
                 type="text"
                 placeholder="Search by name"
                 onChange={(event) => setQuery(event.target.value)}
-                value={query}
+                defaultValue={localStorage.getItem("searchValue") || query}
                 onKeyDown={(event) => event.key === "Enter" && handleSearch()}
               />
               <figure>
@@ -58,7 +63,7 @@ const Browse = () => {
           </header>
         </div>
       </section>
-      <Movies moviesValue={movies}/>
+      <Movies movies={movies} />
     </>
   );
 };
