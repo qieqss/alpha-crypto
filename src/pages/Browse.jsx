@@ -5,10 +5,8 @@ import axios from "axios";
 import API_KEY from "../keys";
 import Movies from "../components/Movies";
 import { IconButton } from "@mui/material";
-import { useNavigate } from "react-router-dom";
 
 const Browse = () => {
-  const navigate = useNavigate();
   const [movies, setMovies] = React.useState([]);
   const [query, setQuery] = React.useState();
   const [loading, setLoading] = React.useState(true);
@@ -23,7 +21,7 @@ const Browse = () => {
   function renderMovies(query) {
     axios
       .get(
-        `https://api.themoviedb.org/3/search/movie?sort_by=popularity.desc&api_key=${API_KEY}&query=${query}`
+        `https://api.themoviedb.org/3/search/movie?sort_by=popularity.desc&api_key=${API_KEY}&query=${query}&language=en-US`
       )
       .then(({ data }) => {
         setMovies(data.results);
