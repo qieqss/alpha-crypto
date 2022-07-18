@@ -9,7 +9,7 @@ const Recommended = ({ id }) => {
   function fetchRecommendedMovies() {
     axios
       .get(
-        `https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${API_KEY}&language=en-US`
+        `https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=b69c1933d70772560f256dfcc45c6056&language=en-US`
       )
       .then(({ data }) => {
         setRecommended(data.results);
