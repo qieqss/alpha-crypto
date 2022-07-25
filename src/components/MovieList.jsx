@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import NotFound from "../assets/search.svg"
 
 const MovieList = ({ movies, loading }) => {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ const MovieList = ({ movies, loading }) => {
           </div>
         )
       })
-      : movies
+      : movies.length ? movies
         .sort((low, high) => high.popularity - low.popularity) // Sort from high to low popularity
         .slice(0, 8)
         .map((movie) => {
@@ -36,7 +37,12 @@ const MovieList = ({ movies, loading }) => {
               </div>
             )
           );
-        })}
+        }) : (
+          <figure className="not__found">
+            <img src={NotFound} alt="" className="not__found--img"/>
+            <figcaption>We searched far and wide, but no movies are to be found 🤔</figcaption>
+          </figure>
+        )}
     </>
   );
 };
