@@ -1,7 +1,7 @@
 import React from "react";
 import MovieList from "./MovieList";
 
-const Movies = ({ movies }) => {
+const Movies = ({ movies, loading }) => {
   return (
     <section id="movies">
       <div className="container">
@@ -15,7 +15,7 @@ const Movies = ({ movies }) => {
             </h2>
           </div>
           <div className="movies">
-            <MovieList movies={movies} />
+            <MovieList movies={movies} loading={loading}/>
           </div>
         </div>
       </div>

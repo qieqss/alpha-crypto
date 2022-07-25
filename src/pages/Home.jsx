@@ -10,6 +10,7 @@ const Home = () => {
   const [query, setQuery] = React.useState("");
 
   function handleSearch() {
+    // (query !== null && query !== "")
     query && (localStorage.setItem("searchValue", query), navigate("/browse"));
   }
 

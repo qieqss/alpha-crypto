@@ -2,7 +2,6 @@ import React from "react";
 import { Search } from "@mui/icons-material";
 import Nav from "../components/Nav";
 import axios from "axios";
-import API_KEY from "../keys";
 import Movies from "../components/Movies";
 import { IconButton } from "@mui/material";
 
@@ -11,14 +10,13 @@ const Browse = () => {
   const [query, setQuery] = React.useState();
   const [loading, setLoading] = React.useState(true);
 
-
-
   function handleSearch() {
-    query && renderMovies(query);
+    renderMovies(query);
     localStorage.setItem("searchValue", query);
   }
 
   function renderMovies(query) {
+    setLoading(true);
     axios
       .get(
         `https://api.themoviedb.org/3/search/movie?sort_by=popularity.desc&api_key=b69c1933d70772560f256dfcc45c6056&query=${query}&language=en-US`
@@ -28,10 +26,11 @@ const Browse = () => {
         setLoading(false);
       })
       .catch((err) => {
-        alert(err.message);
+        console.error(err);
       });
   }
 
+  
   React.useEffect(() => {
     localStorage.getItem("searchValue") &&
       renderMovies(localStorage.getItem("searchValue"));
@@ -61,7 +60,7 @@ const Browse = () => {
           </header>
         </div>
       </section>
-      <Movies movies={movies} />
+      <Movies movies={movies} loading={loading} />
     </>
   );
 };

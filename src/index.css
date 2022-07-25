@@ -283,29 +283,45 @@ MOVIES
   margin: 24px;
 }
 
-.movies {
+.movies,
+.movies--skeletons {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 
 .movie__poster--img,
-.movie__poster {
+.movie__poster,
+.movie--skeleton {
   width: 100%;
-  min-width: 200px;
   max-width: 250px;
   height: 375px;
-  cursor: pointer;
-  transition: transform 500ms ease;
 }
 
-.movie__poster:hover .movie__poster--img {
+.movie--skeleton {
+  min-width: 250px;
+}
+
+.movie__poster--img,
+.movie__poster {
+  cursor: pointer;
+  transition: transform 500ms ease;
+  min-width: 200px;
+}
+
+.movie__poster:hover {
   transform: scale(1.07);
 }
 
-.movie__poster--img {
+.movie__poster--img,
+.movie--skeleton {
   border-radius: 8px;
   overflow: hidden;
+}
+
+.movie--skeleton {
+  margin: 24px;
+  background-color: #8c8c8c;
 }
 
 /* 

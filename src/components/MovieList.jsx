@@ -1,11 +1,19 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const MovieList = ({ movies }) => {
+const MovieList = ({ movies, loading }) => {
   const navigate = useNavigate();
   return (
     <>
-      {movies
+      {loading ?
+      new Array(8).fill(0).map((_, index) => {
+        return (
+          <div className="movies--skeletons" key={index}>
+            <div className="movie--skeleton"></div>
+          </div>
+        )
+      })
+      : movies
         .sort((low, high) => high.popularity - low.popularity) // Sort from high to low popularity
         .slice(0, 8)
         .map((movie) => {

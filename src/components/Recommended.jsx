@@ -1,31 +1,17 @@
 import axios from "axios";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import API_KEY from "../keys";
 
-const Recommended = ({ id }) => {
+const Recommended = ({ recommendedMovies }) => {
   const navigate = useNavigate();
-  const [recommended, setRecommended] = React.useState([]);
-  function fetchRecommendedMovies() {
-    axios
-      .get(
-        `https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=b69c1933d70772560f256dfcc45c6056&language=en-US`
-      )
-      .then(({ data }) => {
-        setRecommended(data.results);
-      });
-  }
 
-  React.useEffect(() => {
-    fetchRecommendedMovies();
-  }, []);
   return (
     <section id="recommended">
       <div className="container">
         <div className="row">
           <h2 className="purple">Recommended movies</h2>
           <div className="movies">
-            {recommended
+            {recommendedMovies
               .sort((high, low) => high.popularity - low.popularity)
               .slice(0, 4)
               .map((movie) => {

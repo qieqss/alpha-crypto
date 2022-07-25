@@ -5,11 +5,11 @@ import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Nav from "../components/Nav";
 import Recommended from "../components/Recommended";
-import API_KEY from "../keys";
 
 const MoviePage = () => {
   const { id } = useParams();
-  const [movie, setMovie] = React.useState({});
+  const [movie, setMovie] = React.useState([]);
+  const [recommended, setRecommended] = React.useState([]);
   const navigate = useNavigate();
 
   function fetchMovieInfo() {
@@ -22,9 +22,20 @@ const MoviePage = () => {
       });
   }
 
+  function fetchRecommendedMovies() {
+    axios
+      .get(
+        `https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=b69c1933d70772560f256dfcc45c6056&language=en-US`
+      )
+      .then(({ data }) => {
+        setRecommended(data.results);
+      });
+  }
+
   React.useEffect(() => {
     fetchMovieInfo();
-  }, []);
+    fetchRecommendedMovies();
+  }, [id] || []);
 
   return (
     <>
@@ -57,7 +68,9 @@ const MoviePage = () => {
           </div>
         </div>
       </section>
-      {<Recommended id={id} />}
+      {recommended.length !== 0 && (
+        <Recommended recommendedMovies={recommended} />
+      )}
     </>
   );
 };
