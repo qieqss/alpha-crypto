@@ -10,7 +10,7 @@ import axios from "axios";
 const Home = () => {
   const navigate = useNavigate();
   const [query, setQuery] = React.useState("");
-  const [loading, setLoading] = React.useState();
+  const [loading, setLoading] = React.useState(false);
 
   function handleSearch() {
     query && localStorage.setItem("searchValue", query);
