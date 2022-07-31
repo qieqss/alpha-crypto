@@ -22,7 +22,7 @@ const Footer = () => {
             <span className="footer__link no-cursor">About</span>
           </div>
           <div className="footer__copyright">
-            Copyright &copy; 2022 Alpha Movies
+            Copyright &copy; {new Date().getFullYear()} Alpha Movies
           </div>
         </div>
       </div>

@@ -34,13 +34,13 @@ const Nav = () => {
             </Link>
           </li>
           <li
-            className={`nav__link nav__link--primary ${
+            className={`nav__link nav__link--primary no-cursor ${
               isSearchPage && "nav__link--primary--change"
             }`}
           >
             <Link
               to=""
-              className="nav__link--anchor nav__link--anchor--primary link__hover-effect"
+              className="nav__link--anchor nav__link--anchor--primary link__hover-effect no-cursor"
             >
               Contact
             </Link>
