@@ -16,15 +16,15 @@ const Home = () => {
     query && localStorage.setItem("searchValue", query);
   }
 
-  function fetchMovies(query) {
-    setLoading(true);
+  function fetchMovies(search) {
+    query && setLoading(true);
     axios
       .get(
-        `https://api.themoviedb.org/3/search/movie?sort_by=popularity.desc&api_key=b69c1933d70772560f256dfcc45c6056&query=${query}&language=en-US`
+        `https://api.themoviedb.org/3/search/movie?sort_by=popularity.desc&api_key=b69c1933d70772560f256dfcc45c6056&query=${search}&language=en-US`
       )
       .then(() => {
         setLoading(false);
-        navigate("/browse");
+        query && navigate("/browse");
       })
       .catch((err) => {
         console.error(err);
@@ -56,7 +56,7 @@ const Home = () => {
                     value={query}
                     onChange={(event) => setQuery(event.target.value)}
                     onKeyDown={(event) =>
-                      event.key === "Enter" && (handleSearch(), fetchMovies())
+                      event.key === "Enter" && (fetchMovies(), handleSearch())
                     }
                   />
                 </div>
