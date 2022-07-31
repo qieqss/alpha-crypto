@@ -40,7 +40,7 @@ const Home = () => {
             <header>
               <div className="text--wrapper">
                 <h1 className="purple">
-                  Russia's most1 awarded online streaming platform
+                  Russia's most awarded online streaming platform
                 </h1>
                 <h2>
                   Discover your dream show with{" "}
