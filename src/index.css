@@ -498,3 +498,20 @@ MEDIA
     align-items: center;
   }
 }
+
+@media (max-width: 892px) {
+  .info--wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+  .info__text {
+    width: 100%;
+    max-width: 375px;
+    text-align: center;
+    margin-left: 0;
+    margin-top: 24px;
+  }
+  #recommended h2 {
+    text-align: center;
+  }
+}
